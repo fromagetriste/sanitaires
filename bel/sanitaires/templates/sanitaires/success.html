@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+
+<body>
+    <h1>successfully uploaded</h1>
+    {% block content %}
+        <h2>{{ form_recu.titre }}</h2>
+    <h3>
+        {{ form_recu.message_frais }}
+    </h3>
+    <h4><a href='{{ form_recu.message_frais.url }}' target='_blank'>lien</a></h4>
+
+    <h5>{{ excel }}</h5>
+
+
+
+    {% endblock %}
+</body>
+</html>
+

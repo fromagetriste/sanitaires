@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message-Frais Uploader</title>
+    <img src="{% static 'images\logobel.png' %}" alt="logo_bel" width="70" height="70">
+</head>
+
+<body>
+    <div>
+    <h1 style="color:green;"> transformation des messages frais en excel</h1>
+    </div>
+   
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+<!--        <input type="file" name="messagefrais"> -->
+        <button type="submit">Valider</button>
+    </form>
+{% endblock %}
+
+</body>
+
+</html>
