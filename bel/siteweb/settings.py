@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'x2=t@3!d%c!n$32(7iit7+g^xc05wipxu7$xwoz#gvpvxu-9*y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
@@ -100,9 +100,9 @@ USE_L10N = True
 USE_TZ = True
 
 
-
+STATIC_ROOT = '/static/'     # créé pour la prod
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads') #pour la production ?
+MEDIA_ROOT = '/uploads/'     #os.path.join(BASE_DIR, 'uploads') #pour la production ?
 MEDIA_URL = '/uploads/'
 
 
