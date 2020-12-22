@@ -100,12 +100,13 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATIC_ROOT = '/static/'     # créé pour la prod
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # créé pour la prod
 STATIC_URL = '/static/'
-MEDIA_ROOT = '/uploads/'     #os.path.join(BASE_DIR, 'uploads') #pour la production ?
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')     #os.path.join(BASE_DIR, 'uploads') #pour la production ?
 MEDIA_URL = '/uploads/'
 
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ] #ajouté par moi, uniquement valable en développment DEBUG = 'True'. Pour la production, on créera un STATIC_ROOT
+
