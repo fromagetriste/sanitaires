@@ -107,6 +107,6 @@ MEDIA_URL = '/uploads/'
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'mes-statics'),
 ] #ajouté par moi, uniquement valable en développment DEBUG = 'True'. Pour la production, on créera un STATIC_ROOT
 
