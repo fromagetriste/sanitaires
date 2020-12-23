@@ -13,14 +13,13 @@
     <h1>successfully uploaded</h1>
     {% block content %}
         <h2>{{ form_recu.titre }}</h2>
-    <h4>
-        {{ form_recu.message_frais }}
+    <h3> {{ form_recu.message_frais }} </h3>
         
-        {{ form_recu.message_frais.path }}
-    </h4>
+    <h4> {{ form_recu.message_frais.path }} </h4>
+        
 
 
-    <h5><a href='{{ form_recu.message_frais.url }}' target='_blank'>lien</a></h5>
+    <h5> <a href='{{ form_recu.message_frais.url }}' target='_blank'>lien</a> </h5>
 
 
     {% endblock %}
