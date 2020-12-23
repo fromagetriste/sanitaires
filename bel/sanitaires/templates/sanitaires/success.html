@@ -15,7 +15,11 @@
         <h2>{{ form_recu.titre }}</h2>
     <h3>
         {{ form_recu.message_frais }}
+        <title>le chemin du fichier :</title>
+        {{ form_recu.message_frais.path }}
     </h3>
+
+    
     <h4><a href='{{ form_recu.message_frais.url }}' target='_blank'>lien</a></h4>
 
 
