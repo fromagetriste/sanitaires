@@ -16,7 +16,7 @@ import xlsxwriter
 
 
 def formater_message_frais(fichier):
-    with open(fichier, 'r', encoding="utf8", errors='ignore') as file:  # encoding à retirer
+    with open(fichier, 'r', encoding="utf8", errors='ignore') as file:  # encoding à retirer, le errors sert à ignorer le caractere ø en position 75, donc je l'ai enlevé dans la premiere fonction replace
         filedata = file.read()
 
     # suppression des données inutiles (respectez cet ordre chronologique pour les .replace)
@@ -30,7 +30,7 @@ def formater_message_frais(fichier):
     filedata = filedata.replace(';;;;', ',')  # on enlève tous les multiples ;;;;; par des "une seule virgule"
     filedata = filedata.replace(';;;', ',')
     filedata = filedata.replace(';', ',')
-'''
+
     # Ecraser les données modifiées dans le fichier
     with open(fichier, 'w') as file:
         file.write(filedata)
@@ -113,7 +113,7 @@ def formater_message_frais(fichier):
     with open(fichier, 'w', encoding='utf-8') as file:
         for n in ma_liste:
             file.write(n)
-'''
+
     # ------------------------------------------------------------------------------------------------------
     # --------------- LE FORMATAGE DU FICHIER USINE EST FINI, ON VIENT DE CREER LE .CSV --------------------
     # ------------------------------------------------------------------------------------------------------
