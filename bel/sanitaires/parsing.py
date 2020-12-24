@@ -117,7 +117,7 @@ def formater_message_frais(fichier):
     with open(fichier, 'w', encoding='utf-8') as file:
         for n in ma_liste:
             file.write(n)
-'''
+
     # ------------------------------------------------------------------------------------------------------
     # --------------- LE FORMATAGE DU FICHIER USINE EST FINI, ON VIENT DE CREER LE .CSV --------------------
     # ------------------------------------------------------------------------------------------------------
