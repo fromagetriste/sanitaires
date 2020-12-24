@@ -119,9 +119,6 @@ def formater_message_frais(fichier):
     # ------------------------------------------------------------------------------------------------------
 
 
-
-#fonctionne bien, en pause en attente du déploiment
-'''
     data_message_frais = pd.read_csv(fichier, encoding='utf-8')
     df = pd.DataFrame(data_message_frais, columns=[
         "Date de départ", "Article", "Désignation", "Quantité commandée", "Lot", "DLUO", "Poids net"
@@ -133,10 +130,7 @@ def formater_message_frais(fichier):
     # deux lignes bien distinctes.
     # On ajoute.sum() pour que les qtés commandées et les poids soient additionnés pour chaque groupage
 
-
-
     chemin_sanitaire_final = str(fichier + num_cde + '.xlsx')
-
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
     writer = pd.ExcelWriter(chemin_sanitaire_final, engine='xlsxwriter')
@@ -148,4 +142,4 @@ def formater_message_frais(fichier):
 
     # Close the Pandas Excel writer and output the Excel file.
     writer.save()
-'''
+
