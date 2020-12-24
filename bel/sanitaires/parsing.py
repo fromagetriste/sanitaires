@@ -16,7 +16,7 @@ import xlsxwriter
 
 
 def formater_message_frais(fichier):
-    with open(fichier, 'r') as file:
+    with open(fichier, 'rb') as file:  #rechanger avec 'r' au lieu de 'rb'
         filedata = file.read()
   
     # suppression des données inutiles (respectez cet ordre chronologique pour les .replace)
