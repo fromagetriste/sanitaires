@@ -16,17 +16,14 @@ import xlsxwriter
 
 
 def formater_message_frais(fichier):
-    with open(fichier, 'r', encoding="utf8") as file:  # encoding à retirer
+    with open(fichier, 'r') as file:  # encoding à retirer
         filedata = file.read()
-    ############
-    with open(fichier, 'w') as file:
-        file.write(filedata)
-    ############ à supprimer
+
     
     # suppression des données inutiles (respectez cet ordre chronologique pour les .replace)
     # on remplace cette ligne par le descrpitif qui nous intéresse
     filedata = filedata.replace(
-        'N de commande client;Date de depart;Code article;Designation;Quantite;Lot;DLUO;Poids net;',  # <--virgule est ici
+        'Nø de commande client;Date de depart;Code article;Designation;Quantite;Lot;DLUO;Poids net;',  # <--virgule est ici
         '"Document commercial";"Date de départ";"Article";"Désignation";"Quantité commandée";"Lot";"DLUO";"Poids net";\n'
         )
     filedata = filedata.replace('*** FIN DE RAPPORT ***', '')
@@ -34,7 +31,7 @@ def formater_message_frais(fichier):
     filedata = filedata.replace(';;;;', ',')  # on enlève tous les multiples ;;;;; par des "une seule virgule"
     filedata = filedata.replace(';;;', ',')
     filedata = filedata.replace(';', ',')
-
+'''
     # Ecraser les données modifiées dans le fichier
     with open(fichier, 'w') as file:
         file.write(filedata)
@@ -117,7 +114,7 @@ def formater_message_frais(fichier):
     with open(fichier, 'w', encoding='utf-8') as file:
         for n in ma_liste:
             file.write(n)
-
+'''
     # ------------------------------------------------------------------------------------------------------
     # --------------- LE FORMATAGE DU FICHIER USINE EST FINI, ON VIENT DE CREER LE .CSV --------------------
     # ------------------------------------------------------------------------------------------------------
