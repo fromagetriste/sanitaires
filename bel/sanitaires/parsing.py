@@ -17,9 +17,12 @@ import xlsxwriter
 
 def formater_message_frais(fichier):
     with open(fichier, 'r', encoding="utf8") as file:  # encoding à retirer
-    
         filedata = file.read()
-  
+    ############
+    with open(fichier, 'w') as file:
+        file.write(filedata)
+    ############ à supprimer
+    '''
     # suppression des données inutiles (respectez cet ordre chronologique pour les .replace)
     # on remplace cette ligne par le descrpitif qui nous intéresse
     filedata = filedata.replace(
@@ -114,7 +117,7 @@ def formater_message_frais(fichier):
     with open(fichier, 'w', encoding='utf-8') as file:
         for n in ma_liste:
             file.write(n)
-
+'''
     # ------------------------------------------------------------------------------------------------------
     # --------------- LE FORMATAGE DU FICHIER USINE EST FINI, ON VIENT DE CREER LE .CSV --------------------
     # ------------------------------------------------------------------------------------------------------
