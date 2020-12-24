@@ -16,14 +16,13 @@ import xlsxwriter
 
 
 def formater_message_frais(fichier):
-    with open(fichier, 'r') as file:  # encoding à retirer
+    with open(fichier, 'r', encoding="utf8", errors='ignore') as file:  # encoding à retirer
         filedata = file.read()
 
-    
     # suppression des données inutiles (respectez cet ordre chronologique pour les .replace)
     # on remplace cette ligne par le descrpitif qui nous intéresse
     filedata = filedata.replace(
-        'Nø de commande client;Date de depart;Code article;Designation;Quantite;Lot;DLUO;Poids net;',  # <--virgule est ici
+        'N de commande client;Date de depart;Code article;Designation;Quantite;Lot;DLUO;Poids net;',  # <--virgule est ici
         '"Document commercial";"Date de départ";"Article";"Désignation";"Quantité commandée";"Lot";"DLUO";"Poids net";\n'
         )
     filedata = filedata.replace('*** FIN DE RAPPORT ***', '')
