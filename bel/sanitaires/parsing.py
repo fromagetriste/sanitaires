@@ -166,7 +166,7 @@ def formater_message_frais(fichier):
     ws['D10'].font = Font(bold=True, color='00008000')
 
 
-    logo_bel = "https://www.pythonanywhere.com/user/bel/files/home/bel/bel.pythonanywhere.com/bel/mes-statics/images/logo-pour-excel.png"
+    logo_bel = "/home/bel/bel.pythonanywhere.com/bel/mes-statics/images/logo-pour-excel.png"
     img = openpyxl.drawing.image.Image(logo_bel)  # on crée l'objet logo pour pouvoir l'ajouer au excel
     ws.add_image(img, anchor="A2")
 
