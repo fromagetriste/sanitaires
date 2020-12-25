@@ -1,21 +1,27 @@
+{% load static %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Téléchargement</title>
-</head>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Téléchargement</title>
+        <img src="{% static 'images\logobel.png' %}" alt="logo_bel" width="70" height="70">
+    </head>
 
 
 <body>
-    <h1>successfully uploaded</h1>
-    {% block content %}
 
-    <h4> <a href='{{ url_du_fichier_xlsx }}' target='_blank'>fichier excel</a> </h4>
-    
+    <div>
+    <h1 style="color:green;"> fichier prêt à être télécharger</h1>
+    </div>
+
+    {% block content %}
+    <h2> <a href='{{ url_du_fichier_xlsx }}' target='_blank'>fichier excel</a> </h2>
     {% endblock %}
+
 </body>
 </html>
 
