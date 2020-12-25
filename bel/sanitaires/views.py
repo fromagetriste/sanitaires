@@ -31,7 +31,7 @@ def success(request):
     formater_message_frais(chemin_message_frais)
     url_du_fichier_xlsx = str(form_recu.message_frais.url[:-4] + '.xlsx')
     return render(request, 'sanitaires/success.html', {
-        'form_recu' : form_recu
+        'form_recu' : form_recu,
         'url_du_fichier_xlsx' : url_du_fichier_xlsx
         })
 
