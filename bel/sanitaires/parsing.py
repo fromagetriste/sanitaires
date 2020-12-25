@@ -166,18 +166,33 @@ def formater_message_frais(fichier):
     ws['D10'].font = Font(bold=True, color='00008000')
 
 
-
-
+    logo_bel = "https://www.pythonanywhere.com/user/bel/files/home/bel/bel.pythonanywhere.com/bel/mes-statics/images/logo-pour-excel.png"
+    img = openpyxl.drawing.image.Image(logo_bel)  # on crée l'objet logo pour pouvoir l'ajouer au excel
+    ws.add_image(img, anchor="A2")
 
     openpyxl.worksheet.worksheet.Worksheet.set_printer_settings(ws, paper_size=9, orientation='landscape')
     # paper_size=9 == format A4, voir documentation
     ws.sheet_properties.pageSetUpPr.fitToPage = True  # Ajuster à une page
 
+
+    # redimensionne la largeur des colonnes
+    ws.column_dimensions['A'].width = 22
+    ws.column_dimensions['B'].width = 22
+    ws.column_dimensions['C'].width = 40
+    ws.column_dimensions['D'].width = 22
+    ws.column_dimensions['E'].width = 22
+    ws.column_dimensions['F'].width = 22
+    ws.column_dimensions['G'].width = 22
+    ws.column_dimensions['H'].width = 22
+    ws.column_dimensions['I'].width = 22
+
     # centrer (mise en page) les valeurs du tableau :
     rows = range(13, 100)
-    columns = [1, 2, 3, 5, 6, 7, 8]
+    columns = [1, 2, 4, 5, 6, 7, 8]
     for row in rows:
         for col in columns:
             ws.cell(row, col).alignment = Alignment(horizontal='center')
 
     wb.save(chemin_sanitaire_final)
+
+ 
