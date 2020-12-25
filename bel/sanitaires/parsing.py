@@ -143,3 +143,41 @@ def formater_message_frais(fichier):
     # Close the Pandas Excel writer and output the Excel file.
     writer.save()
 
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+
+    # Maintenant on le rouvre avec Openpyxl pour y faire les modifs suivantes :
+    wb = openpyxl.load_workbook(chemin_sanitaire_final)
+    ws = wb["Sheet1"] # on définit sur quelle feuille on fait les modifs
+    ws['B2'] = "Expéditeur/ Shipper:"
+    ws['B2'].font = Font(italic=True)
+    ws['B3'] = "Bel S.A."
+    ws['B3'].font = Font(bold=True, color='00008000')
+    ws['B4'] = "2 Allée de Longchamp"
+    ws['B5'] = "92150 Suresnes"
+    ws['B6'] = "Tél.: +33 (0)1 84 02 72 50"
+    ws['B7'] = "Capital social 10308502,50 € "
+    ws['B8'] = "SIREN 542088067 – RCN Nanterre – NAF 1051C"
+    ws['D10'] = f"Order number : {num_cde}"
+    ws['D10'].font = Font(bold=True, color='00008000')
+
+
+
+
+
+    openpyxl.worksheet.worksheet.Worksheet.set_printer_settings(ws, paper_size=9, orientation='landscape')
+    # paper_size=9 == format A4, voir documentation
+    ws.sheet_properties.pageSetUpPr.fitToPage = True  # Ajuster à une page
+
+    # centrer (mise en page) les valeurs du tableau :
+    rows = range(13, 100)
+    columns = [1, 2, 3, 5, 6, 7, 8]
+    for row in rows:
+        for col in columns:
+            ws.cell(row, col).alignment = Alignment(horizontal='center')
+
+    wb.save(chemin_sanitaire_final)
