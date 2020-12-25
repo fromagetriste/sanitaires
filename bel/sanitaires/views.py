@@ -27,10 +27,11 @@ def sanitaires(request):
 
 def success(request):
     form_recu = FichierFrais.objects.latest('pk')
-    #print(' .path() = ' + form_recu.message_frais.path)
     chemin_message_frais = form_recu.message_frais.path
     formater_message_frais(chemin_message_frais)
+    url_du_fichier_xlsx = str(form_recu.message_frais.url[:-4] + '.xlsx')
     return render(request, 'sanitaires/success.html', {
         'form_recu' : form_recu
+        'url_du_fichier_xlsx' : url_du_fichier_xlsx
         })
 
