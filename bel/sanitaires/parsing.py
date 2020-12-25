@@ -176,11 +176,11 @@ def formater_message_frais(fichier):
 
 
     # redimensionne la largeur des colonnes
-    ws.column_dimensions['A'].width = 22
-    ws.column_dimensions['B'].width = 22
+    ws.column_dimensions['A'].width = 20
+    ws.column_dimensions['B'].width = 18
     ws.column_dimensions['C'].width = 40
-    ws.column_dimensions['D'].width = 22
-    ws.column_dimensions['E'].width = 22
+    ws.column_dimensions['D'].width = 18
+    ws.column_dimensions['E'].width = 20
     ws.column_dimensions['F'].width = 22
     ws.column_dimensions['G'].width = 22
     ws.column_dimensions['H'].width = 22
