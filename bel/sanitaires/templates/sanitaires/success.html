@@ -12,12 +12,9 @@
 <body>
     <h1>successfully uploaded</h1>
     {% block content %}
-        <h2>{{ form_recu.titre }}</h2>
-    <h3> {{ form_recu.message_frais }} </h3>     
 
     <h4> <a href='{{ url_du_fichier_xlsx }}' target='_blank'>fichier excel</a> </h4>
-    <h5> <a href='{{ form_recu.message_frais.url }}' target='_blank'>lien</a> </h5>
-
+    
     {% endblock %}
 </body>
 </html>

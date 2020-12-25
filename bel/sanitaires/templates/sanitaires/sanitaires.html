@@ -14,16 +14,13 @@
     <div>
     <h1 style="color:green;"> transformation des messages frais en excel</h1>
     </div>
-   
 {% block content %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-<!--        <input type="file" name="messagefrais"> -->
         <button type="submit">Valider</button>
     </form>
 {% endblock %}
-
 </body>
 
 </html>
