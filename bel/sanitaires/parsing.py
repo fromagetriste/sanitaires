@@ -129,8 +129,8 @@ def formater_message_frais(fichier):
     # ici on groupe par rapport à ces colones, car si le lot ou la date de sortie varie pour un même code produit, on veut
     # deux lignes bien distinctes.
     # On ajoute.sum() pour que les qtés commandées et les poids soient additionnés pour chaque groupage
-
-    chemin_sanitaire_final = str(num_cde + '.xlsx')
+    fichier = str(fichier)
+    chemin_sanitaire_final = str(fichier[:-4] + num_cde + '.xlsx')
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
     writer = pd.ExcelWriter(chemin_sanitaire_final, engine='xlsxwriter')
