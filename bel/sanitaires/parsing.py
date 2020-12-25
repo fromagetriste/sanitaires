@@ -130,7 +130,7 @@ def formater_message_frais(fichier):
     # deux lignes bien distinctes.
     # On ajoute.sum() pour que les qtés commandées et les poids soient additionnés pour chaque groupage
     
-    chemin_sanitaire_final = str(fichier + num_cde + '.xlsx')
+    chemin_sanitaire_final = str(fichier[:-4] + '.xlsx')
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
     writer = pd.ExcelWriter(chemin_sanitaire_final, engine='xlsxwriter')
