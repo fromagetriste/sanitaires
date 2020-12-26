@@ -1,4 +1,4 @@
-from datetime import datetime
+#from datetime import datetime
 import pandas as pd
 import numpy as np
 import xlrd
@@ -12,7 +12,7 @@ from openpyxl.worksheet.worksheet import Worksheet
 from openpyxl.styles import Font
 import xlsxwriter
 
-#from.views import chemin_message_frais
+from quantieme import calcul_date_prod
 
 
 def formater_message_frais(fichier):
@@ -130,6 +130,21 @@ def formater_message_frais(fichier):
     # deux lignes bien distinctes.
     # On ajoute.sum() pour que les qtés commandées et les poids soient additionnés pour chaque groupage
     
+
+
+
+
+
+
+
+    df2['Production date'] = calcul_date_prod(df2['Batch #'])
+
+
+
+
+
+
+
     chemin_sanitaire_final = str(fichier[:-4] + '.xlsx')
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
