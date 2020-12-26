@@ -4,8 +4,10 @@ from datetime import datetime
 
 #lot = "SC2941D"
 
-def calcul_date_prod(lot):  
-    if lot[0] not in range[0:9]:
+def calcul_date_prod(lot):
+    verif = str(lot[0])
+    nombres = "0123456789"
+    if verif not in nombres:
         try:
             quantieme = str(lot[2:-2]) # str() car l'objet pandas est series
             quantieme_converti = datetime.strptime(quantieme, '%j')
