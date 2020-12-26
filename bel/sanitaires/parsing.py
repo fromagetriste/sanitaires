@@ -200,10 +200,6 @@ def formater_message_frais(fichier):
     for row in rows:
         for col in columns:
             ws.cell(row, col).alignment = Alignment(horizontal='center')
-            # à tester
-            if ws.cell(row,col) == 'erreur':
-                ws.cell(row, col).font = Font(color='red', bold=True)
-                # dans success.html : target='_blank'
 
     wb.save(chemin_sanitaire_final)
 
