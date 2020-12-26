@@ -172,24 +172,24 @@ def formater_message_frais(fichier):
     ws['B2'] = "Expéditeur/ Shipper:"
     ws['B2'].font = Font(italic=True)
     ws['B3'] = "Bel S.A."
-    ws['B3'].font = Font(bold=True, color='00008000')
+    ws['B3'].font = Font(bold=True, color='00008000', size=12)
     ws['B4'] = "2 Allée de Longchamp"
     ws['B5'] = "92150 Suresnes"
     ws['B6'] = "Tél.: +33 (0)1 84 02 72 50"
     ws['B7'] = "Capital social 10308502,50 € "
     ws['B8'] = "SIREN 542088067 – RCN Nanterre – NAF 1051C"
-    ws['C10'] = "Order number :"
-    ws['C10'].font = Font(bold=True, color='00008000', size=14)
-    ws['C11'] = num_cde
-    ws['C11'].font = Font(bold=True, color='00008000', size=14)
+    ws['D10'] = "Order number :"
+    ws['D10'].font = Font(bold=True, color='00008000', size=12)
+    ws['D11'] = num_cde
+    ws['D11'].font = Font(bold=True, color='00008000', size=12)
     ws['G10'] = "Total Quantity :"
-    ws['G10'].font = Font(bold=True, color='00008000', size=14)
+    ws['G10'].font = Font(bold=True, color='00008000', size=12)
     ws['G11'] = total_quantity
-    ws['G11'].font = Font(bold=True, color='00008000', size=14)
+    ws['G11'].font = Font(bold=True, color='00008000', size=12)
     ws['H10'] = "Total Net weight :"
-    ws['H10'].font = Font(bold=True, color='00008000', size=14)
+    ws['H10'].font = Font(bold=True, color='00008000', size=12)
     ws['H11'] = total_net_weight
-    ws['H11'].font = Font(bold=True, color='00008000', size=14)
+    ws['H11'].font = Font(bold=True, color='00008000', size=12)
     
     
 
