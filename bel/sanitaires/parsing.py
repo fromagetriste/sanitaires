@@ -137,6 +137,7 @@ def formater_message_frais(fichier):
 
 
 
+    df2.insert(4,'Production date','')
     df2['Production date'] = calcul_date_prod(df2['Batch #'])
 
 
