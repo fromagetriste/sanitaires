@@ -4,23 +4,26 @@
 <html lang="en">
     
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message-Frais Uploader</title>
+    <title>Upload page</title>
     <img src="{% static 'images\logobel.png' %}" alt="logo_bel" width="70" height="70">
 </head>
 
 <body>
     <div>
-    <h1 style="color:green;"> transformation des messages frais en excel</h1>
+    <h1 style="color:green;"> text file to excel</h1>
     </div>
 {% block content %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Valider</button>
+        <button type="submit">Validate</button>
     </form>
 {% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>
