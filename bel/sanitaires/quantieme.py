@@ -5,12 +5,14 @@ from datetime import datetime
 #lot = "SC2941D"
 
 def calcul_date_prod(lot):
-    verif = str(lot[0])
-    nombres = "0123456789"
-    if verif not in nombres:
+    lot_premier_caractere = str(lot[0])
+    chiffres = "0123456789"
+    # on s'assure que le lot commence par une lettres et non un chiffre : 
+    if lot_premier_caractere not in chiffres: 
+    # sinon, certains lots comme "171612" remplissent la condition et renvoient une date prod erronée
         try:
             quantieme = str(lot[2:-2]) # str() car l'objet pandas est series
-            quantieme_converti = datetime.strptime(quantieme, '%j')
+            quantieme_converti = datetime.strptime(quantieme, '%j') #%j = format for day of the year, default year = 1900
             newformat = quantieme_converti.strftime('%d/%m/')
             annee_auj = datetime.now().year
             prod_initiale = newformat + str(annee_auj)
@@ -29,6 +31,6 @@ def calcul_date_prod(lot):
                 return(prod_moins_un)
         
         except:
-            return("erreur")
+            return("error")
     else:
-        return("erreur")
+        return("error")

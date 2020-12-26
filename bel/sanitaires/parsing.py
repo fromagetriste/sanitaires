@@ -129,6 +129,7 @@ def formater_message_frais(fichier):
     # ici on groupe par rapport à ces colones, car si le lot ou la date de sortie varie pour un même code produit, on veut
     # deux lignes bien distinctes.
     # On ajoute.sum() pour que les qtés commandées et les poids soient additionnés pour chaque groupage
+
     # ------------------------------------------------------------------------------------------------------
     # --------------- INSERTION DE LA COLONNE CALCULEE POUR LES DATES DE PRODUCTION ------------------------
     # ------------------------------------------------------------------------------------------------------
@@ -138,6 +139,9 @@ def formater_message_frais(fichier):
     chemin_sanitaire_final = str(fichier[:-4] + '.xlsx')
 
     #seulement maintenant, je peux changer les colonnes %d/%m en format str %d/%m/%Y
+    df['Loading date'] = pd.to_datetime(df['Loading date'].dt.strftime('%d/%m/%Y'))
+    df['Best before'] = pd.to_datetime(df['Best before'].dt.strftime('%d/%m/%Y'))
+
 
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
