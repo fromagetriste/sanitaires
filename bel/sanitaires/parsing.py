@@ -12,7 +12,7 @@ from openpyxl.worksheet.worksheet import Worksheet
 from openpyxl.styles import Font
 import xlsxwriter
 
-from quantieme import calcul_date_prod
+from .quantieme import calcul_date_prod
 
 
 def formater_message_frais(fichier):
