@@ -31,6 +31,6 @@ def calcul_date_prod(lot):
                 return(prod_moins_un)
         
         except:
-            return("go MMBE")
+            return("MMBE")
     else:
-        return("go MMBE")
+        return("MMBE")

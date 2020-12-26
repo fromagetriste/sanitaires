@@ -147,7 +147,7 @@ def formater_message_frais(fichier):
     total_net_weight = df2['Net weight'].sum()
 
     # nombre de date de prod qu'on a pas pu convertir
-    total_wrong_dates = (df2['Production date'] == "go MMBE").counts()
+    total_wrong_dates = df2[(df2['Production date'] == "MMBE")].counts()
     
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
