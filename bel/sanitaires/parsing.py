@@ -129,25 +129,16 @@ def formater_message_frais(fichier):
     # ici on groupe par rapport à ces colones, car si le lot ou la date de sortie varie pour un même code produit, on veut
     # deux lignes bien distinctes.
     # On ajoute.sum() pour que les qtés commandées et les poids soient additionnés pour chaque groupage
-    
-
-
-
-
-
-
-
+    # ------------------------------------------------------------------------------------------------------
+    # --------------- INSERTION DE LA COLONNE CALCULEE POUR LES DATES DE PRODUCTION ------------------------
+    # ------------------------------------------------------------------------------------------------------
     df2.insert(4,'Production date','')
     df2['Production date'] = df2['Batch #'].apply(calcul_date_prod)
 
-
-
-
-
-
-
-
     chemin_sanitaire_final = str(fichier[:-4] + '.xlsx')
+
+    #seulement maintenant, je peux changer les colonnes %d/%m en format str %d/%m/%Y
+
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
     writer = pd.ExcelWriter(chemin_sanitaire_final, engine='xlsxwriter')
@@ -209,6 +200,10 @@ def formater_message_frais(fichier):
     for row in rows:
         for col in columns:
             ws.cell(row, col).alignment = Alignment(horizontal='center')
+            # à tester
+            if ws.cell(row,col) == 'erreur':
+                ws.cell(row, col).font = Font(color='red', bold=True)
+                # dans success.html : target='_blank'
 
     wb.save(chemin_sanitaire_final)
 
