@@ -21,8 +21,7 @@
 
     {% block content %}
     <h2> 
-        <button type="button" class="btn btn-success">Success</button>
-        <a href='{{ url_du_fichier_xlsx }}' target='_blank' >click here to download your file</a> 
+        <button href='{{ url_du_fichier_xlsx }}' type="button" class="btn btn-success" target='_blank' >download your file</button>
     </h2>
     {% endblock %}
 
@@ -31,3 +30,7 @@
 </html>
 
 
+
+<a href="#" class="btn btn-info" role="button">Link Button</a>
+<button type="button" class="btn btn-info">Button</button>
+<a href='{{ url_du_fichier_xlsx }}' class="btn btn-success" target='_blank' >download your file</a> 
