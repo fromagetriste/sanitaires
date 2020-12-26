@@ -10,24 +10,16 @@
     
     <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
-          <span class="navbar-brand mb-0 h1">Upload</span>
+          <span class="navbar-brand mb-0 h1"></span>
         </div>
     </nav>
-    
-    <style>
-        body {
-        background-color: #c0c0c0
-        }
-    </style>
 
     <title>Upload page</title>
     <img src="{% static 'images\logobel.png' %}" alt="logo_bel" width="70" height="70">
 </head>
 
 <body>
-    <div>
-    <h1 style="color:green;"> text file to excel</h1>
-    </div>
+  
 {% block content %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
