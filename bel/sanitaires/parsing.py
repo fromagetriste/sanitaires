@@ -136,6 +136,7 @@ def formater_message_frais(fichier):
     df2.insert(4,'Production date','')
     df2['Production date'] = df2['Batch #'].apply(calcul_date_prod)
 
+    
     chemin_sanitaire_final = str(fichier[:-4] + '.xlsx')
 
     #seulement maintenant, je peux changer les colonnes %d/%m en format str %d/%m/%Y
@@ -145,9 +146,6 @@ def formater_message_frais(fichier):
     # get totals
     total_quantity = df2['Quantity'].sum()
     total_net_weight = df2['Net weight'].sum()
-
-    # nombre de date de prod qu'on a pas pu convertir
-    total_wrong_dates = df2[(df2['Production date'] == "MMBE")].counts()
     
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
@@ -184,8 +182,6 @@ def formater_message_frais(fichier):
     ws['C10'].font = Font(bold=True, color='00008000', size=14)
     ws['C11'] = num_cde
     ws['C11'].font = Font(bold=True, color='00008000', size=14)
-    ws['D10'] = f"WARNING : You have {total_wrong_dates} production dates to search !"
-    ws['D10'].font = Font(bold=True, color='red', size=14)
     ws['G10'] = "Total Quantity :"
     ws['G10'].font = Font(bold=True, color='00008000', size=14)
     ws['G11'] = total_quantity
