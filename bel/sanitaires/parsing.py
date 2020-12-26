@@ -23,7 +23,7 @@ def formater_message_frais(fichier):
     # on remplace cette ligne par le descrpitif qui nous intéresse
     filedata = filedata.replace(
         'N de commande client;Date de depart;Code article;Designation;Quantite;Lot;DLUO;Poids net;',  # <--virgule est ici
-        '"Document commercial";"Loading date";"Item code";"Product name";"Quantity";"Batch #";"Best before :";"Net weight";\n'
+        '"Document commercial";"Loading date";"Item code";"Product name";"Quantity";"Batch #";"Best before";"Net weight";\n'
         )
     filedata = filedata.replace('*** FIN DE RAPPORT ***', '')
     filedata = filedata.replace(',', '.')  # car les poids sont en XX,XX kg je les veux en XX.XX kg
@@ -52,7 +52,7 @@ def formater_message_frais(fichier):
 
     # on définit un index, qui sera le point 0 du début de ma_liste
     index_debut = ma_liste.index(
-        '"Document commercial","Loading date","Item code","Product name","Quantity","Batch #","Best before :","Net weight",\n')
+        '"Document commercial","Loading date","Item code","Product name","Quantity","Batch #","Best before","Net weight",\n')
     ma_liste = ma_liste[index_debut:-1]
     # garde tout depuis cet index jusqu'à la fin du doc moins le dernier élément TOTAL GLOBAL
     # A partir de maintenant, on a juste une liste avec les infos qui nous intéresse et pas d'autres infos inutiles
@@ -121,11 +121,11 @@ def formater_message_frais(fichier):
 
     data_message_frais = pd.read_csv(fichier, encoding='utf-8')
     df = pd.DataFrame(data_message_frais, columns=[
-        "Loading date", "Item code", "Product name", "Quantity", "Batch #", "Best before :", "Net weight"
+        "Loading date", "Item code", "Product name", "Quantity", "Batch #", "Best before", "Net weight"
     ])  # on crée le dataframe à partir du .txt et on désigne les colones qu'on veut garder
 
     df2 = df.groupby(
-        ["Loading date", "Item code", "Product name", "Batch #", "Best before :"], as_index=False).sum()
+        ["Loading date", "Item code", "Product name", "Batch #", "Best before"], as_index=False).sum()
     # ici on groupe par rapport à ces colones, car si le lot ou la date de sortie varie pour un même code produit, on veut
     # deux lignes bien distinctes.
     # On ajoute.sum() pour que les qtés commandées et les poids soient additionnés pour chaque groupage
@@ -138,7 +138,7 @@ def formater_message_frais(fichier):
 
 
     df2.insert(4,'Production date','')
-    #df2['Production date'] = calcul_date_prod(df2['Batch #'])
+    df2['Production date'] = calcul_date_prod(df2['Batch #'])
 
 
 
@@ -197,10 +197,10 @@ def formater_message_frais(fichier):
     ws.column_dimensions['C'].width = 40
     ws.column_dimensions['D'].width = 18
     ws.column_dimensions['E'].width = 20
-    ws.column_dimensions['F'].width = 22
-    ws.column_dimensions['G'].width = 22
-    ws.column_dimensions['H'].width = 22
-    ws.column_dimensions['I'].width = 22
+    ws.column_dimensions['F'].width = 20
+    ws.column_dimensions['G'].width = 20
+    ws.column_dimensions['H'].width = 20
+    ws.column_dimensions['I'].width = 20
 
     # centrer (mise en page) les valeurs du tableau :
     rows = range(13, 100)

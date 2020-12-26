@@ -5,7 +5,7 @@ from datetime import datetime
 #lot = "SC2941D"
 
 def calcul_date_prod(lot):  
-
+    try:
     quantieme = lot[2:-2]
     quantieme_converti = datetime.strptime(quantieme, '%j')
     newformat = quantieme_converti.strftime('%d/%m/')
@@ -24,4 +24,8 @@ def calcul_date_prod(lot):
         annee_moins_un = annee_auj - 1
         prod_moins_un = newformat + str(annee_moins_un)
         return(prod_moins_un)
-        
+    
+    except:
+        return("erreur")
+    else:
+        return("else")
