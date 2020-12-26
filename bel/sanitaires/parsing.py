@@ -177,8 +177,10 @@ def formater_message_frais(fichier):
     ws['B6'] = "Tél.: +33 (0)1 84 02 72 50"
     ws['B7'] = "Capital social 10308502,50 € "
     ws['B8'] = "SIREN 542088067 – RCN Nanterre – NAF 1051C"
-    ws['C10'] = f"Order number : {num_cde}"
+    ws['C10'] = "Order number :"
     ws['C10'].font = Font(bold=True, color='00008000', size=14)
+    ws['C11'] = num_cde
+    ws['C11'].font = Font(bold=True, color='00008000', size=14)
     ws['G10'] = "Total Quantity :"
     ws['G10'].font = Font(bold=True, color='00008000', size=14)
     ws['G11'] = total_quantity
@@ -211,7 +213,7 @@ def formater_message_frais(fichier):
     ws.column_dimensions['I'].width = 20
 
     # centrer (mise en page) les valeurs du tableau :
-    rows = range(13, 100)
+    rows = range(10, 100)
     columns = [1, 2, 4, 5, 6, 7, 8]
     for row in rows:
         for col in columns:
