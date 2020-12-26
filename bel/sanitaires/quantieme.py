@@ -6,7 +6,7 @@ from datetime import datetime
 
 def calcul_date_prod(lot):  
     try:
-        quantieme = lot[2:-2]
+        quantieme = str(lot[2:-2]) # str() car l'objet pandas est series
         quantieme_converti = datetime.strptime(quantieme, '%j')
         newformat = quantieme_converti.strftime('%d/%m/')
         annee_auj = datetime.now().year
