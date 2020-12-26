@@ -142,6 +142,9 @@ def formater_message_frais(fichier):
     df2['Loading date'] = pd.to_datetime(df2['Loading date']).dt.strftime('%d/%m/%Y')
     df2['Best before'] = pd.to_datetime(df2['Best before']).dt.strftime('%d/%m/%Y')
 
+    # get totals
+    total_quantity = df2['Quantity'].sum()
+    total_net_weight = df2['Net weight'].sum()
 
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
@@ -176,7 +179,16 @@ def formater_message_frais(fichier):
     ws['B8'] = "SIREN 542088067 – RCN Nanterre – NAF 1051C"
     ws['C10'] = f"Order number : {num_cde}"
     ws['C10'].font = Font(bold=True, color='00008000', size=14)
-
+    ws['G10'] = "Total Quantity :"
+    ws['G10'].font = Font(bold=True, color='00008000', size=14)
+    ws['G11'] = total_quantity
+    ws['G11'].font = Font(bold=True, color='00008000', size=14)
+    ws['H10'] = "Total Net weight :"
+    ws['H10'].font = Font(bold=True, color='00008000', size=14)
+    ws['H11'] = total_net_weight
+    ws['H11'].font = Font(bold=True, color='00008000', size=14)
+    
+    
 
     logo_bel = "/home/bel/bel.pythonanywhere.com/bel/mes-statics/images/logo-pour-excel.png"
     img = openpyxl.drawing.image.Image(logo_bel)  # on crée l'objet logo pour pouvoir l'ajouer au excel
