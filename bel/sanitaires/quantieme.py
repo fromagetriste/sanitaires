@@ -20,12 +20,10 @@ def calcul_date_prod(lot):
 
         if date_auj > prod_deux:
             return(prod_initiale)
-    else :
-        annee_moins_un = annee_auj - 1
-        prod_moins_un = newformat + str(annee_moins_un)
-        return(prod_moins_un)
+        else :
+            annee_moins_un = annee_auj - 1
+            prod_moins_un = newformat + str(annee_moins_un)
+            return(prod_moins_un)
     
     except:
         return("erreur")
-    else:
-        return("else")
