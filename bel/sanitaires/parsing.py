@@ -139,8 +139,8 @@ def formater_message_frais(fichier):
     chemin_sanitaire_final = str(fichier[:-4] + '.xlsx')
 
     #seulement maintenant, je peux changer les colonnes %d/%m en format str %d/%m/%Y
-    df['Loading date'] = pd.to_datetime(df['Loading date'].dt.strftime('%d/%m/%Y'))
-    df['Best before'] = pd.to_datetime(df['Best before'].dt.strftime('%d/%m/%Y'))
+    df['Loading date'] = pd.to_datetime(df['Loading date'].strftime('%d/%m/%Y'))
+    df['Best before'] = pd.to_datetime(df['Best before'].strftime('%d/%m/%Y'))
 
 
 
