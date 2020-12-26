@@ -6,20 +6,20 @@ from datetime import datetime
 
 def calcul_date_prod(lot):  
     try:
-    quantieme = lot[2:-2]
-    quantieme_converti = datetime.strptime(quantieme, '%j')
-    newformat = quantieme_converti.strftime('%d/%m/')
-    annee_auj = datetime.now().year
-    prod_initiale = newformat + str(annee_auj)
-    date_auj = datetime.now()
-    date_auj = date_auj.strftime('%d/%m/%Y')
+        quantieme = lot[2:-2]
+        quantieme_converti = datetime.strptime(quantieme, '%j')
+        newformat = quantieme_converti.strftime('%d/%m/')
+        annee_auj = datetime.now().year
+        prod_initiale = newformat + str(annee_auj)
+        date_auj = datetime.now()
+        date_auj = date_auj.strftime('%d/%m/%Y')
 
-    #remise des dates en objets date :
-    prod_deux = datetime.strptime(prod_initiale, '%d/%m/%Y')
-    date_auj = datetime.strptime(date_auj, '%d/%m/%Y')
+        #remise des dates en objets date :
+        prod_deux = datetime.strptime(prod_initiale, '%d/%m/%Y')
+        date_auj = datetime.strptime(date_auj, '%d/%m/%Y')
 
-    if date_auj > prod_deux:
-        return(prod_initiale)
+        if date_auj > prod_deux:
+            return(prod_initiale)
     else :
         annee_moins_un = annee_auj - 1
         prod_moins_un = newformat + str(annee_moins_un)
