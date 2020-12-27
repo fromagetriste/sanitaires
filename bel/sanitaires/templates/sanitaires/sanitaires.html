@@ -8,7 +8,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <nav class="navbar navbar-dark bg-dark">
+    <style>
+        body {
+          background-color: black;
+        }
+    </style>
+
+    <nav class="navbar navbar-dark bg-primary">
         <div class="container-fluid">
           <span class="navbar-brand mb-0 h1"></span>
         </div>
@@ -16,6 +22,8 @@
 
     <title>Upload page</title>
     <img src="{% static 'images\logobel.png' %}" alt="logo_bel" width="70" height="70">
+    <img src="{% static 'images\django-logo.jpg' %}" alt="logo_bel" width="140" height="70">
+    <img src="{% static 'images\python-logo.jpg' %}" alt="logo_bel" width="70" height="70">
 </head>
 
 <body>
@@ -24,7 +32,7 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-secondary" type="submit">Validate</button>
+        <button class="btn btn-primary" type="submit">Validate</button>
     </form>
 {% endblock %}
 
