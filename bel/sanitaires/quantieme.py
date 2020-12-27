@@ -1,7 +1,6 @@
 import datetime
 from datetime import datetime
 
-
 #lot = "SC2941D"
 
 def calcul_date_prod(lot):
@@ -34,3 +33,4 @@ def calcul_date_prod(lot):
             return("MMBE")
     else:
         return("MMBE")
+
