@@ -178,17 +178,17 @@ def formater_message_frais(fichier):
     ws['B6'] = "Tél.: +33 (0)1 84 02 72 50"
     ws['B7'] = "Capital social 10308502,50 € "
     ws['B8'] = "SIREN 542088067 – RCN Nanterre – NAF 1051C"
-    ws['D10'] = "Commande numéro :"
-    ws['D10'].font = Font(bold=True, color='00008000', size=12)
-    ws['D11'] = num_cde
-    ws['D11'].font = Font(bold=True, color='00008000', size=12)
+    ws['C10'] = "Commande numéro :"
+    ws['C10'].font = Font(bold=True, color='00008000', size=12)
+    ws['C11'] = num_cde
+    ws['C11'].font = Font(bold=True, color='00008000', size=12)
     ws['G10'] = "Quantité totale :"
     ws['G10'].font = Font(bold=True, color='00008000', size=12)
     ws['G11'] = total_quantity
     ws['G11'].font = Font(bold=True, color='00008000', size=12)
     ws['H10'] = "Poids net total :"
     ws['H10'].font = Font(bold=True, color='00008000', size=12)
-    ws['H11'] = f"{total_net_weight} + ' kg'"
+    ws['H11'] = f"{total_net_weight} kg"
     ws['H11'].font = Font(bold=True, color='00008000', size=12)
     
     
