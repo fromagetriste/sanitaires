@@ -23,7 +23,7 @@ def formater_message_frais(fichier):
     # on remplace cette ligne par le descrpitif qui nous intéresse
     filedata = filedata.replace(
         'N de commande client;Date de depart;Code article;Designation;Quantite;Lot;DLUO;Poids net;',  # <--virgule est ici
-        '"Document commercial";"Loading date";"Item code";"Product name";"Quantity";"Batch #";"Best before";"Net weight";\n'
+        '"Document commercial";"Date chargement";"Code article";"Désignation";"Quantité";"Numéro lot";"DLUO";"Poids net";\n'
         )
     filedata = filedata.replace('*** FIN DE RAPPORT ***', '')
     filedata = filedata.replace(',', '.')  # car les poids sont en XX,XX kg je les veux en XX.XX kg
@@ -52,7 +52,7 @@ def formater_message_frais(fichier):
 
     # on définit un index, qui sera le point 0 du début de ma_liste
     index_debut = ma_liste.index(
-        '"Document commercial","Loading date","Item code","Product name","Quantity","Batch #","Best before","Net weight",\n')
+        '"Document commercial","Date chargement","Code article","Désignation","Quantité","Numéro lot","DLUO","Poids net",\n')
     ma_liste = ma_liste[index_debut:-1]
     # garde tout depuis cet index jusqu'à la fin du doc moins le dernier élément TOTAL GLOBAL
     # A partir de maintenant, on a juste une liste avec les infos qui nous intéresse et pas d'autres infos inutiles
@@ -121,11 +121,11 @@ def formater_message_frais(fichier):
 
     data_message_frais = pd.read_csv(fichier, encoding='utf-8')
     df = pd.DataFrame(data_message_frais, columns=[
-        "Loading date", "Item code", "Product name", "Quantity", "Batch #", "Best before", "Net weight"
+        "Date chargement", "Code article", "Désignation", "Quantité", "Numéro lot", "DLUO", "Poids net"
     ])  # on crée le dataframe à partir du .txt et on désigne les colones qu'on veut garder
 
     df2 = df.groupby(
-        ["Loading date", "Item code", "Product name", "Batch #", "Best before"], as_index=False).sum()
+        ["Date chargement", "Code article", "Désignation", "Numéro lot", "DLUO"], as_index=False).sum()
     # ici on groupe par rapport à ces colones, car si le lot ou la date de sortie varie pour un même code produit, on veut
     # deux lignes bien distinctes.
     # On ajoute.sum() pour que les qtés commandées et les poids soient additionnés pour chaque groupage
@@ -133,19 +133,19 @@ def formater_message_frais(fichier):
     # ------------------------------------------------------------------------------------------------------
     # --------------- INSERTION DE LA COLONNE CALCULEE POUR LES DATES DE PRODUCTION ------------------------
     # ------------------------------------------------------------------------------------------------------
-    df2.insert(4,'Production date','')
-    df2['Production date'] = df2['Batch #'].apply(calcul_date_prod)
+    df2.insert(4,'Date production','')
+    df2['Date production'] = df2['Numéro lot'].apply(calcul_date_prod)
 
     
     chemin_sanitaire_final = str(fichier[:-4] + '.xlsx')
 
     #seulement maintenant, je peux changer les colonnes %d/%m en format str %d/%m/%Y
-    df2['Loading date'] = pd.to_datetime(df2['Loading date']).dt.strftime('%d/%m/%Y')
-    df2['Best before'] = pd.to_datetime(df2['Best before']).dt.strftime('%d/%m/%Y')
+    df2['Date chargement'] = pd.to_datetime(df2['Date chargement']).dt.strftime('%d/%m/%Y')
+    df2['DLUO'] = pd.to_datetime(df2['DLUO']).dt.strftime('%d/%m/%Y')
 
     # get totals
-    total_quantity = df2['Quantity'].sum()
-    total_net_weight = df2['Net weight'].sum()
+    total_quantity = df2['Quantité'].sum()
+    total_net_weight = df2['Poids net'].sum()
     
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
@@ -169,7 +169,7 @@ def formater_message_frais(fichier):
     # Maintenant on le rouvre avec Openpyxl pour y faire les modifs suivantes :
     wb = openpyxl.load_workbook(chemin_sanitaire_final)
     ws = wb["Sheet1"] # on définit sur quelle feuille on fait les modifs
-    ws['B2'] = "Expéditeur/ Shipper:"
+    ws['B2'] = "Expéditeur :"
     ws['B2'].font = Font(italic=True)
     ws['B3'] = "Bel S.A."
     ws['B3'].font = Font(bold=True, color='00008000', size=12)
@@ -178,17 +178,17 @@ def formater_message_frais(fichier):
     ws['B6'] = "Tél.: +33 (0)1 84 02 72 50"
     ws['B7'] = "Capital social 10308502,50 € "
     ws['B8'] = "SIREN 542088067 – RCN Nanterre – NAF 1051C"
-    ws['D10'] = "Order number :"
+    ws['D10'] = "Commande numéro :"
     ws['D10'].font = Font(bold=True, color='00008000', size=12)
     ws['D11'] = num_cde
     ws['D11'].font = Font(bold=True, color='00008000', size=12)
-    ws['G10'] = "Total Quantity :"
+    ws['G10'] = "Quantité totale :"
     ws['G10'].font = Font(bold=True, color='00008000', size=12)
     ws['G11'] = total_quantity
     ws['G11'].font = Font(bold=True, color='00008000', size=12)
-    ws['H10'] = "Total Net weight :"
+    ws['H10'] = "Poids net total :"
     ws['H10'].font = Font(bold=True, color='00008000', size=12)
-    ws['H11'] = f'{total_net_weight} + ' kg'
+    ws['H11'] = f"{total_net_weight} + ' kg'"
     ws['H11'].font = Font(bold=True, color='00008000', size=12)
     
     
