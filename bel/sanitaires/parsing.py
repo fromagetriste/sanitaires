@@ -188,11 +188,10 @@ def formater_message_frais(fichier):
     ws['G11'].font = Font(bold=True, color='00008000', size=12)
     ws['H10'] = "Total Net weight :"
     ws['H10'].font = Font(bold=True, color='00008000', size=12)
-    ws['H11'] = total_net_weight
+    ws['H11'] = f'{total_net_weight} + ' kg'
     ws['H11'].font = Font(bold=True, color='00008000', size=12)
     
     
-
     logo_bel = "/home/bel/bel.pythonanywhere.com/bel/mes-statics/images/logo-pour-excel.png"
     img = openpyxl.drawing.image.Image(logo_bel)  # on crée l'objet logo pour pouvoir l'ajouer au excel
     ws.add_image(img, anchor="A2")
