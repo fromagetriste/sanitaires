@@ -187,7 +187,7 @@ def formater_message_frais(fichier):
     ws['G11'].font = Font(bold=True, color='00008000', size=12)
     ws['H10'] = "Poids net total :"
     ws['H10'].font = Font(bold=True, color='00008000', size=12)
-    ws['H11'] = f"{float(total_net_weight).round(total_net_weight, 3)} kg"
+    ws['H11'] = f"{total_net_weight} kg"
     ws['H11'].font = Font(bold=True, color='00008000', size=12)
     
     
