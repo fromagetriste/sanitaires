@@ -135,8 +135,6 @@ def formater_message_frais(fichier):
     # ------------------------------------------------------------------------------------------------------
     df2.insert(4,'Date production','')
     df2['Date production'] = df2['Numéro lot'].apply(calcul_date_prod)
-
-    df2.insert(8,'Agréments usines','Rech V à faire')
     
     chemin_sanitaire_final = str(fichier[:-4] + '.xlsx')
 
@@ -211,7 +209,7 @@ def formater_message_frais(fichier):
     ws.column_dimensions['F'].width = 20
     ws.column_dimensions['G'].width = 20
     ws.column_dimensions['H'].width = 20
-    ws.column_dimensions['I'].width = 40
+    ws.column_dimensions['I'].width = 20
 
     # centrer (mise en page) les valeurs du tableau :
     rows = range(10, 100)
