@@ -7,6 +7,8 @@ from django.core.validators import FileExtensionValidator
 
 
 class FichierFrais(models.Model):
-    message_frais = models.FileField(upload_to='uploads/', max_length=100, validators=[FileExtensionValidator(allowed_extensions=['txt'])]) # not safe
+    message_frais = models.FileField(
+        upload_to='uploads/', max_length=100, validators=[FileExtensionValidator(allowed_extensions=['txt'])]
+        ) # not safe
     # Don’t rely on validation of the file extension to determine a file’s type. Files can be renamed to have any extension no matter what data they contain.
     
