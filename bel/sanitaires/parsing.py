@@ -13,6 +13,7 @@ from openpyxl.styles import Font
 import xlsxwriter
 
 from .quantieme import calcul_date_prod
+from .formatdate import format_europeen
 
 
 def formater_message_frais(fichier):
@@ -141,9 +142,9 @@ def formater_message_frais(fichier):
     
     chemin_sanitaire_final = str(fichier[:-4] + '.xlsx')
 
-    #seulement maintenant, je peux changer les colonnes %d/%m en format str %d/%m/%Y
-    #df2['Date chargement'] = pd.to_datetime(df2['Date chargement']).dt.strftime('%d/%m/%Y')
-    #df2['DLUO'] = pd.to_datetime(df2['DLUO']).dt.strftime('%d/%m/%Y')
+    #seulement maintenant, je peux changer les formats dates chargement et DLUO en %d/%m/%Y
+    df2['Date chargement'] = df2['Date chargement'].apply(format_europeen)
+    df2['DLUO'] = df2['DLUO'].apply(format_europeen)
 
     # get totals
     total_quantity = df2['Quantité'].sum()
