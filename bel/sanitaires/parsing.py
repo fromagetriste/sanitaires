@@ -142,8 +142,8 @@ def formater_message_frais(fichier):
     chemin_sanitaire_final = str(fichier[:-4] + '.xlsx')
 
     #seulement maintenant, je peux changer les colonnes %d/%m en format str %d/%m/%Y
-    df2['Date chargement'] = pd.to_datetime(df2['Date chargement']).dt.strftime('%d/%m/%Y')
-    df2['DLUO'] = pd.to_datetime(df2['DLUO']).dt.strftime('%d/%m/%Y')
+    #df2['Date chargement'] = pd.to_datetime(df2['Date chargement']).dt.strftime('%d/%m/%Y')
+    #df2['DLUO'] = pd.to_datetime(df2['DLUO']).dt.strftime('%d/%m/%Y')
 
     # get totals
     total_quantity = df2['Quantité'].sum()
