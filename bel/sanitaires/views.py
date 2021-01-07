@@ -6,7 +6,6 @@ from django.http import HttpResponseRedirect
 from .parsing import formater_message_frais
 from .models import FichierFrais
 from .forms import FichierFraisForm
-from .autodetele import supprimer_fichiers
 
 
 
@@ -28,7 +27,6 @@ def sanitaires(request):
 
 def success(request):
     form_recu = FichierFrais.objects.latest('pk')
-    supprimer_fichiers()
     chemin_message_frais = form_recu.message_frais.path
     formater_message_frais(chemin_message_frais)
     url_du_fichier_xlsx = str(form_recu.message_frais.url[:-4] + '.xlsx')
