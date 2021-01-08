@@ -12,6 +12,3 @@ def supprimer_fichiers():
             os.remove(os.path.join(dir, f))
     except:
         pass
-
-if __name__ == "__main__":
-    supprimer_fichiers()
