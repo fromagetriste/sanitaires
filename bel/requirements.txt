@@ -13,3 +13,5 @@ sqlparse==0.4.1
 xlrd==2.0.1
 XlsxWriter==1.3.7
 zope.interface==5.2.0
+Pillow==8.0.1
+path==15.0.1
