@@ -13,3 +13,5 @@ def supprimer_fichiers():
     except:
         pass
 
+if __name__ == "__main__":
+    supprimer_fichiers()

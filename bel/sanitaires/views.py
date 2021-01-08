@@ -10,7 +10,7 @@ from .autodetele import supprimer_fichiers
 
 
 def sanitaires(request):
-    supprimer_fichiers()
+    #supprimer_fichiers() pour supprimer tous les fichiers stockés (loop and delete)
     if request.method == 'POST':
         form = FichierFraisForm(request.POST, request.FILES)
         if form.is_valid():
