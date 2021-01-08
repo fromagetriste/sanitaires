@@ -10,6 +10,7 @@ from .autodetele import supprimer_fichiers
 
 
 def sanitaires(request):
+    supprimer_fichiers()
     if request.method == 'POST':
         form = FichierFraisForm(request.POST, request.FILES)
         if form.is_valid():
@@ -27,7 +28,6 @@ def sanitaires(request):
 
 def success(request):
     form_recu = FichierFrais.objects.latest('pk')
-    supprimer_fichiers()
     chemin_message_frais = form_recu.message_frais.path
     formater_message_frais(chemin_message_frais)
     url_du_fichier_xlsx = str(form_recu.message_frais.url[:-4] + '.xlsx')
