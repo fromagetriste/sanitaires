@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.utils import timezone
-from django.http import HttpResponseRedirect
 
 from .parsing import formater_message_frais
 from .models import FichierFrais
